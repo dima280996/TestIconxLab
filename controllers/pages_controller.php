@@ -3,7 +3,7 @@
 class PagesController extends Controller{
 
     public function index(){
-        echo "Тут буде список студентів";
+        $this->data['test_content'] = "Тут буде список студентів";
     }
 
     public function view(){
@@ -11,7 +11,7 @@ class PagesController extends Controller{
         if (isset($params[0])){
             $alias = strtolower($params[0]);
             
-            echo "Тут буде сторінка з аліасом '{$alias}'";
+            $this->data['content'] = "Тут буде сторінка з аліасом '{$alias}'";
         }
     }
 
