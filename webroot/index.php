@@ -1,11 +1,20 @@
 <?php
 
+error_reporting(E_ALL);
+
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(dirname(__FILE__)));
 
-$uri = $_SERVER['REQUEST_URI'];
+require_once(ROOT.DS.'lib'.DS.'init.php');
 
-print_r($uri);
+$router = new Router($_SERVER['REQUEST_URI']);
+
+echo "<pre>";
+print_r('Route: '.$router->getRoute().PHP_EOL);
+print_r('Controller: '.$router->getController().PHP_EOL);
+print_r('Action to be called: '.$router->getMethodPrefix().$router->getAction().PHP_EOL);
+echo "Params: ";
+print_r($router->getParams());
 
 
 ?>
