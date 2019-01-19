@@ -10,5 +10,10 @@ require_once(ROOT.DS.'lib'.DS.'init.php');
 
 App::run($_SERVER['REQUEST_URI']);
 
+//$test = App::getDB();
+$test = App::$db->query('SELECT * FROM studens');
+echo "<pre>";
+
+print_r($test);
 
 ?>

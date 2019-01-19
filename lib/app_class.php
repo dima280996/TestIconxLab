@@ -3,14 +3,21 @@
 class App{
 
     protected static $router;
+    public static $db;
 
     public static function getRouter(){
         return self::$router;
     }
 
+    public static function getDB(){
+        return self::$db;
+    }
+
     public static function run($uri){
         self::$router = new Router($uri);
         
+        self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
+
         $controller_class = ucfirst(self::$router->getController()).'Controller';
         $controller_method = strtolower(self::$router->getMethodPrefix().self::$router->getAction());
         
