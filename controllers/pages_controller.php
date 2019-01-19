@@ -2,8 +2,13 @@
 
 class PagesController extends Controller{
 
+    public function __construct($data = array()){
+        parent::__construct($data);
+        $this->model = new Page();
+    }
+
     public function index(){
-        $this->data['test_content'] = "Тут буде список студентів";
+        $this->data['pages'] = $this->model->getList();
     }
 
     public function view(){
@@ -11,7 +16,7 @@ class PagesController extends Controller{
         if (isset($params[0])){
             $alias = strtolower($params[0]);
             
-            $this->data['content'] = "Тут буде сторінка з аліасом '{$alias}'";
+            $this->data['page'] = $this->model->getByAlias($alias);
         }
     }
 
