@@ -1,0 +1,36 @@
+<h3>Студенти:</h3><br/>
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<th>Ім'я</th>
+		<th>Прізвище</th>
+		<th>Вік</th>
+		<th>Стать</th>
+		<th>Група</th>
+		<th>Факультет</th>
+		<th>Керування</th>
+	</tr>
+</thead>
+<tbody>
+<?php foreach($data['students'] as $student_data) { ?>
+	<tr>
+		<td><?=$student_data['name']?></td>
+        <td><?=$student_data['surname']?></td>
+        <td><?=$student_data['age']?></td>    	
+        <td><?=$student_data['sex']?></td>
+        <td><?=$student_data['groups']?></td>	
+        <td><?=$student_data['faculty']?></td>
+        <td align="center">
+        	<a href="/students/edit/<?=$student_data['id']?>"><button class="btn btn-sm btn-primary">Редагувати</button></a>
+        	<a href="/students/delete/<?=$student_data['id']?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Видалити</button></a>
+        </td>
+    </tr>    
+<?php } ?>
+</tbody>
+</table>
+
+<br/>
+
+<div>
+	<a href="/students/add/"><button class="btn btn-success">Додати студента</button></a>
+</div>

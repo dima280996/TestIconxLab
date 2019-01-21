@@ -10,10 +10,10 @@ require_once(ROOT.DS.'lib'.DS.'init.php');
 
 App::run($_SERVER['REQUEST_URI']);
 
-//$test = App::getDB();
-$test = App::$db->query('SELECT * FROM studens');
+/*
+$test = App::$db->query('SELECT students.id, name, surname, age, sex, groups, faculty FROM students JOIN groups ON students.group_id = groups.id');
 echo "<pre>";
 
 print_r($test);
-
+*/
 ?>

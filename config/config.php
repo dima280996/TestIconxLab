@@ -1,6 +1,6 @@
 <?php
 
-Config::set('site_name', 'Сайт..');
+Config::set('site_name', 'IconxLab');
 
 // Routes. Route name => method prefix
 Config::set('routes', array(
@@ -9,7 +9,7 @@ Config::set('routes', array(
 ));
 
 Config::set('default_route', 'default');
-Config::set('default_controller', 'pages');
+Config::set('default_controller', 'students');
 Config::set('default_action', 'index');
 
 Config::set('db.host', 'localhost');
