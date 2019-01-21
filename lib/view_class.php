@@ -1,8 +1,11 @@
 <?php
 
+/** Клас представлення */
 class View{
 
+	/** @var object Дані, передані від контролера */
 	protected $data;
+	/** @var string Шлях до файлу представлення */
 	protected $path;
 
 	public function __construct($data = array(), $path = null){
@@ -16,6 +19,10 @@ class View{
 		$this->data = $data;
 	}
 
+	/**
+	 * Рендеринг шаблону, повернення html-коду
+	 * @return string
+	 */
 	public function render(){
 		$data = $this->data;
 
@@ -26,6 +33,10 @@ class View{
 		return $content;
 	}
 
+	/**
+	 * Повернення шляху до шаблону
+	 * @return string
+	 */
 	protected static function getDefaultViewPath(){
 		$router = App::getRouter();
 		if(!$router){

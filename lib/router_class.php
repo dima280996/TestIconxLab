@@ -1,11 +1,21 @@
 <?php
+
+/**
+ * Диспетчер запитів: парсинг $uri на route, controller, action, params
+ */
 class Router{
 
+    /** @var string Uri-рядок для парсингу */
     protected $uri;
+    /** @var mixed Назва controller */
     protected $controller;
+    /** @var mixed Назва action */
     protected $action;
+    /** @var mixed Список параметрів після action */
     protected $params;
+    /** @var mixed Вибір роута за замовчуванням */
     protected $route;
+    /** @var mixed Префікс до роута */
     protected $method_prefix;
 
     public function __construct($uri){
@@ -52,30 +62,52 @@ class Router{
 
     }
 
+    /**
+     * Перенаправлення на вказаний адрес
+     * @param string
+     */
     public static function redirect($location){
         header("Location: $location");
     }
 
+    /**
+     * @return mixed
+     */
     public function getUri(){
         return $this->uri;
     }
 
+    /**
+     * @return mixed
+     */
     public function getController(){
         return $this->controller;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAction(){
         return $this->action;
     }
 
+    /**
+     * @return mixed
+     */
     public function getParams(){
         return $this->params;
     }
 
+    /**
+     * @return mixed
+     */
     public function getRoute(){
         return $this->route;
     }
 
+    /**
+     * @return mixed
+     */
     public function getMethodPrefix(){
         return $this->method_prefix;
     }

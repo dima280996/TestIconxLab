@@ -1,13 +1,23 @@
 <?php
 
+/** Модель списку студентів */
 class Student extends Model{
 
+    /**
+     * Виведення списку студентів
+     * @return array
+     */
 	public function getStudentsList(){
 		$sql = "SELECT * FROM students";
 
 		return $this->db->query($sql);
 	}
 
+    /**
+     * Вибірка одного студента по id
+     * @param  integer
+     * @return array
+     */
 	public function getById($id){
 		$id = (int)$id;
 		$sql = "SELECT * FROM students WHERE students.id = '{$id}'";
@@ -16,6 +26,12 @@ class Student extends Model{
 		return isset($result[0]) ? $result[0] : null;
 	}
 
+    /**
+     * Додавання або редагування студента, залежно від наявності id
+     * @param array
+     * @param mixed
+     * @return array
+     */
 	public function save($data, $id = null){
         if (!isset($data['name']) || !isset($data['surname']) || !isset($data['age']) || !isset($data['sex']) || !isset($data['groups']) || !isset($data['faculty'])){
             return false;
@@ -53,12 +69,17 @@ class Student extends Model{
         return $this->db->query($sql);
     }
 
+    /**
+     * Видалення студента по id
+     * @param  integer
+     * @return array
+     */
     public function delete($id){
     	$id = (int)$id;
     	$sql = "DELETE FROM students WHERE id = '{$id}'";
         return $this->db->query($sql);
     }
-
+    
 }
 
 ?>

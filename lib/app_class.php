@@ -1,18 +1,34 @@
 <?php
 
+/**
+ * Клас для обробки запитів до додатка, звернення в index.php
+ */
 class App{
 
+    /** @var object Робота з об'єктом роутера */
     protected static $router;
+    /** @var object Підключення до БД */
     public static $db;
 
+    /**
+     * @return object Отримання об'єкта $router
+     */
     public static function getRouter(){
         return self::$router;
     }
 
+    /**
+     * @return object Отримання об'єкта БД
+     */
     public static function getDB(){
         return self::$db;
     }
 
+    /**
+     * Обробка запитів до додатка
+     * @param  string
+     * @return string
+     */
     public static function run($uri){
         self::$router = new Router($uri);
         
@@ -36,5 +52,6 @@ class App{
         $layout_view_object = new View(compact('content'), $layout_path);
         echo $layout_view_object->render();
     }
+
 }
 ?>
